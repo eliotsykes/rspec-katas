@@ -1,11 +1,14 @@
 module FizzBuzz
 
   def self.play
+
+    fizz = "Fizz"
+    buzz = "Buzz"
     
     played_array = (1..100).map do |i|
       played_i = ""
-      played_i = "Fizz" if divisible_by_3?(i)
-      played_i += "Buzz" if divisible_by_5?(i)
+      played_i = fizz if divisible_by_3?(i)
+      played_i += buzz if divisible_by_5?(i)
       played_i = i if played_i.length == 0
       played_i
     end
