@@ -9,7 +9,7 @@ module FizzBuzz
       played_i = ""
       played_i = fizz if divisible_by_3?(i)
       played_i += buzz if divisible_by_5?(i)
-      played_i = i if played_i.length == 0
+      played_i = i if played_i.empty?
       played_i
     end
     
