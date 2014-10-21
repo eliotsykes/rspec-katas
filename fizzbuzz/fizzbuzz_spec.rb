@@ -2,7 +2,7 @@ require_relative "fizzbuzz"
 
 RSpec.describe FizzBuzz do
 
-  describe "#play" do
+  describe ".play" do
 
     DIV_BY_3 = "Fizz".freeze
     DIV_BY_5 = "Buzz".freeze
