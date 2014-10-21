@@ -47,6 +47,19 @@ RSpec.describe FizzBuzz do
       expect(FizzBuzz.play.split(" ").length).to eq 100
     end
 
+    it "prints the last 11 correctly" do
+
+      div_by_3 = "Fizz"
+      div_by_5 = "Buzz"
+      div_by_3_5 = "FizzBuzz"
+
+      expect(FizzBuzz.play).to end_with([
+        div_by_3_5, 91, 92, div_by_3, 94,
+        div_by_5, div_by_3, 97, 98, div_by_3,
+        div_by_5
+      ].join(" "))
+    end
+
   end
   
 end
