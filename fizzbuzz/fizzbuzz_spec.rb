@@ -4,17 +4,18 @@ RSpec.describe FizzBuzz do
 
   describe "#play" do
 
+    DIV_BY_3 = "Fizz".freeze
+    DIV_BY_5 = "Buzz".freeze
+    DIV_BY_3_5 = "FizzBuzz".freeze
+
     it "prints up to 15 correctly" do
 
-      div_by_3 = "Fizz"
-      div_by_5 = "Buzz"
-      div_by_3_5 = "FizzBuzz"
-
       expect(FizzBuzz.play).to start_with([
-        1, 2, div_by_3, 4, div_by_5,
-        div_by_3, 7, 8, div_by_3, div_by_5,
-        11, div_by_3, 13, 14, div_by_3_5
+        1, 2, DIV_BY_3, 4, DIV_BY_5,
+        DIV_BY_3, 7, 8, DIV_BY_3, DIV_BY_5,
+        11, DIV_BY_3, 13, 14, DIV_BY_3_5
       ].join(" "))
+
     end
 
     it "prints 100 entries" do
@@ -23,15 +24,12 @@ RSpec.describe FizzBuzz do
 
     it "prints the last 11 correctly" do
 
-      div_by_3 = "Fizz"
-      div_by_5 = "Buzz"
-      div_by_3_5 = "FizzBuzz"
-
       expect(FizzBuzz.play).to end_with([
-        div_by_3_5, 91, 92, div_by_3, 94,
-        div_by_5, div_by_3, 97, 98, div_by_3,
-        div_by_5
+        DIV_BY_3_5, 91, 92, DIV_BY_3, 94,
+        DIV_BY_5, DIV_BY_3, 97, 98, DIV_BY_3,
+        DIV_BY_5
       ].join(" "))
+
     end
 
   end
