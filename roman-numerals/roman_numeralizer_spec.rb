@@ -1,5 +1,3 @@
-# require_relative "roman_numeralizer"
-
 describe "roman_numeralizer.rb" do
 
   context "usage help" do
