@@ -22,6 +22,8 @@ module RomanNumeralizer
       "I" * number_to_convert  
     when 4
       "IV"
+    when 5
+      "V"
     end
   end
 

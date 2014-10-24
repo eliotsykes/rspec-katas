@@ -25,6 +25,9 @@ describe "roman_numeralizer.rb" do
         expect(output).to eq EXPECTED_USAGE
       end
     end
+
+    xit "outputs instructions when number exceeds maximum of 3000" do
+    end
   end
 
   context "with number argument", focus: true do
@@ -33,7 +36,8 @@ describe "roman_numeralizer.rb" do
       1 => "I",
       2 => "II",
       3 => "III",
-      4 => "IV"
+      4 => "IV",
+      5 => "V"
     }
 
     EXPECTED_CONVERSIONS.each do |number_to_convert, in_numerals|
