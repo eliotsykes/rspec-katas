@@ -27,13 +27,16 @@ describe "roman_numeralizer.rb" do
     end
   end
 
-  context "with number argument" do
+  context "with number argument", focus: true do
 
-    {
+    EXPECTED_CONVERSIONS = {
       1 => "I",
       2 => "II",
-      3 => "III"
-    }.each do |number_to_convert, in_numerals|
+      3 => "III",
+      4 => "IV"
+    }
+
+    EXPECTED_CONVERSIONS.each do |number_to_convert, in_numerals|
 
       it "prints conversion for '#{number_to_convert}' to '#{in_numerals}'" do
         output = run_program(number_to_convert)

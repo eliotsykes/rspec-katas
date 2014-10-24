@@ -17,7 +17,12 @@ module RomanNumeralizer
   end
 
   def self.to_numerals(number_to_convert)
-    "I" * number_to_convert
+    case number_to_convert
+    when 1..3
+      "I" * number_to_convert  
+    when 4
+      "IV"
+    end
   end
 
   def self.print_usage_and_exit
