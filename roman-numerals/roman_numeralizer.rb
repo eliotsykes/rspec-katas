@@ -20,10 +20,15 @@ module RomanNumeralizer
     case number_to_convert
     when 1..3
       "I" * number_to_convert  
-    when 4
-      "IV"
+    when 4,9
+      modifier = 1
+      "#{to_numerals(modifier)}#{to_numerals(number_to_convert + modifier)}"
     when 5
       "V"
+    when 6..8
+      "V#{to_numerals(number_to_convert - 5)}"
+    when 10
+      "X"
     end
   end
 

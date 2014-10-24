@@ -33,11 +33,16 @@ describe "roman_numeralizer.rb" do
   context "with number argument", focus: true do
 
     EXPECTED_CONVERSIONS = {
-      1 => "I",
-      2 => "II",
-      3 => "III",
-      4 => "IV",
-      5 => "V"
+      1  => "I",
+      2  => "II",
+      3  => "III",
+      4  => "IV",
+      5  => "V",
+      6  => "VI",
+      7  => "VII",
+      8  => "VIII",
+      9  => "IX",
+      10 => "X",
     }
 
     EXPECTED_CONVERSIONS.each do |number_to_convert, in_numerals|
