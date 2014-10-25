@@ -76,6 +76,13 @@ class RomanNumeral
     V  = create_primitive(5, :V)
     IX = create_primitive(9, :IX)
     X  = create_primitive(10, :X)
+    XL = create_primitive(40, :XL)
+    L  = create_primitive(50, :L)
+    XC = create_primitive(90, :XC)
+    C  = create_primitive(100, :C)
+    CD = create_primitive(400, :CD)
+    D  = create_primitive(500, :D)
+    CM = create_primitive(900, :CM)
     M  = create_primitive(1000, :M)
 
   end
@@ -96,7 +103,7 @@ module RomanNumeralizer
       print_usage_and_exit
     end
     
-    puts "#{number_to_convert} -> #{roman_numerals}"
+    puts "#{roman_numerals.to_i} -> #{roman_numerals}"
   end
 
   private
