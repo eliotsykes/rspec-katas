@@ -1,3 +1,81 @@
+class RomanNumeral
+
+  attr_accessor :numerals, :numeral_symbol
+  attr_writer :number
+
+  def to_i
+    number
+  end
+
+  def number
+    @number ||= @numerals.map(&:number).reduce(:+)
+  end
+
+  def to_s
+    @numerals.map(&:numeral_symbol).join
+  end
+
+  def ==(other)
+    other.to_i == to_i
+  end
+
+  def <=>(other)
+    to_i <=> other.to_i
+  end
+
+  def <=(other)
+    to_i <= other.to_i
+  end
+
+  def self.create(number)
+    
+    remainder = number
+    primitives_in_descending_order = Primitives.all.reverse
+    numerals = []
+    
+    while remainder > 0
+      largest_primitive_in_remainder = primitives_in_descending_order.find { |primitive| primitive <= remainder }
+      if largest_primitive_in_remainder == number
+        return largest_primitive_in_remainder
+      end
+      numerals << largest_primitive_in_remainder
+      remainder = remainder - largest_primitive_in_remainder.to_i
+    end
+    
+    result = RomanNumeral.new
+    result.numerals = numerals
+    result
+  end
+
+  module Primitives
+
+    def self.all
+      @primitives.freeze unless @primitives.frozen?
+      @primitives
+    end
+
+    private
+
+    def self.create_primitive(number, numeral_symbol)
+      primitive = RomanNumeral.new
+      primitive.number = number
+      primitive.numeral_symbol = numeral_symbol
+      primitive.numerals = [primitive].freeze
+      @primitives = [] unless @primitives
+      @primitives << primitive
+      @primitives.sort!
+    end
+
+    I  = create_primitive(1, :I)
+    IV = create_primitive(4, :IV)
+    V  = create_primitive(5, :V)
+    IX = create_primitive(9, :IX)
+    X  = create_primitive(10, :X)
+
+  end
+
+end
+
 module RomanNumeralizer
 
   def self.execute(arguments)
@@ -17,19 +95,7 @@ module RomanNumeralizer
   end
 
   def self.to_numerals(number_to_convert)
-    case number_to_convert
-    when 1..3
-      "I" * number_to_convert  
-    when 4,9
-      modifier = 1
-      "#{to_numerals(modifier)}#{to_numerals(number_to_convert + modifier)}"
-    when 5
-      "V"
-    when 6..8
-      "V#{to_numerals(number_to_convert - 5)}"
-    when 10
-      "X"
-    end
+    RomanNumeral.create(number_to_convert)
   end
 
   def self.print_usage_and_exit
@@ -40,3 +106,5 @@ module RomanNumeralizer
 end
 
 RomanNumeralizer.execute(ARGV)
+
+
