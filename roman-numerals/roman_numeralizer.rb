@@ -71,6 +71,7 @@ class RomanNumeral
     V  = create_primitive(5, :V)
     IX = create_primitive(9, :IX)
     X  = create_primitive(10, :X)
+    M  = create_primitive(1000, :M)
 
   end
 
@@ -91,7 +92,7 @@ module RomanNumeralizer
   private
 
   def self.convertible?(number_to_convert)
-    number_to_convert >= 1
+    number_to_convert >= 1 && number_to_convert <= 3000
   end
 
   def self.to_numerals(number_to_convert)
