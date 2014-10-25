@@ -2,7 +2,7 @@ describe "roman_numeralizer.rb" do
 
   context "usage help" do
 
-    EXPECTED_USAGE = "Usage: 'ruby roman-numerals/roman_numeralizer.rb NUMBER' where NUMBER is a positive integer\n"
+    EXPECTED_USAGE = "Usage: 'ruby roman-numerals/roman_numeralizer.rb NUMBER' where NUMBER is a positive integer from 1 to 3000 inclusive\n"
 
     it "outputs instructions when no argument is given" do
       output = run_program

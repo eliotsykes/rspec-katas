@@ -27,8 +27,13 @@ class RomanNumeral
     to_i <= other.to_i
   end
 
+  BOUNDS = [1, 3000].freeze
+
   def self.create(number)
     
+    within_bounds = number >= BOUNDS.first && number <= BOUNDS.last
+    raise ArgumentError, "Number must be within bounds #{BOUNDS} inclusive" unless within_bounds
+
     remainder = number
     primitives_in_descending_order = Primitives.all.reverse
     numerals = []
@@ -84,23 +89,22 @@ module RomanNumeralizer
     print_usage_and_exit if cli_arg_needed
 
     number_to_convert = arguments[0].to_i
-    print_usage_and_exit if !convertible?(number_to_convert)
-
-    puts "#{number_to_convert} -> #{to_numerals(number_to_convert)}"
+    
+    begin
+      roman_numerals = RomanNumeral.create(number_to_convert)
+    rescue ArgumentError
+      print_usage_and_exit
+    end
+    
+    puts "#{number_to_convert} -> #{roman_numerals}"
   end
 
   private
 
-  def self.convertible?(number_to_convert)
-    number_to_convert >= 1 && number_to_convert <= 3000
-  end
-
-  def self.to_numerals(number_to_convert)
-    RomanNumeral.create(number_to_convert)
-  end
-
   def self.print_usage_and_exit
-    puts "Usage: 'ruby roman-numerals/roman_numeralizer.rb NUMBER' where NUMBER is a positive integer"
+    puts "Usage: 'ruby roman-numerals/roman_numeralizer.rb NUMBER' where " +
+      "NUMBER is a positive integer from #{RomanNumeral::BOUNDS.first} to " +
+      "#{RomanNumeral::BOUNDS.last} inclusive"
     exit
   end
 
