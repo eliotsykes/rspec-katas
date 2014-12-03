@@ -1,11 +1,6 @@
-require "open-uri"
-require "nokogiri"
+require_relative "lib/snapshot_taker"
 
-module Snapshotter
+url = ARGV.last
+title = SnapshotTaker.fetch_title(url)
+puts title
 
-  def self.fetch_title(url)
-    document = Nokogiri::HTML(open(url))
-    document.title
-  end
-
-end
