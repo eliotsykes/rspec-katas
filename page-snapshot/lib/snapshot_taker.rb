@@ -3,6 +3,15 @@ require "nokogiri"
 
 module SnapshotTaker
 
+  def self.take(url)
+    title = fetch_title(url)
+
+    target_file_path = "/tmp/downloaded-favicon.ico"
+    fetch_favicon(url, target_file_path)
+
+    return {title: title, favicon_path: target_file_path}
+  end
+
   def self.fetch_title(url)
     document = Nokogiri::HTML(open(url))
     document.title

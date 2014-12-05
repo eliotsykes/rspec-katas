@@ -9,6 +9,7 @@ if missing_url
 end
 
 url = ARGV.last
-title = SnapshotTaker.fetch_title(url)
-puts title
+snapshot = SnapshotTaker.take(url)
+puts "Title: #{snapshot[:title]}"
+puts "Favicon path: #{snapshot[:favicon_path]}"
 

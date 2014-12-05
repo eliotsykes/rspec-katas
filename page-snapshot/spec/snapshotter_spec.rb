@@ -20,9 +20,14 @@ describe "snapshotter.rb" do
 
   context "called with a valid URL" do
 
-    it "outputs page title on its own line" do
+    NEWLINE = $/
+
+    it "outputs page title and downloaded favicon" do
       output = run_script("http://en.wikipedia.org/")
-      expect(output).to eq("Wikipedia, the free encyclopedia\n")
+      expect(output).to eq([
+        "Title: Wikipedia, the free encyclopedia",
+        "Favicon path: /tmp/downloaded-favicon.ico" + NEWLINE
+      ].join(NEWLINE))
     end
 
   end

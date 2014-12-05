@@ -2,6 +2,31 @@ require_relative "../lib/snapshot_taker"
 
 describe SnapshotTaker do
 
+  context ".take(url)" do
+
+    before do
+      @target_file_path = "/tmp/downloaded-favicon.ico"
+      FileUtils.rm @target_file_path, force: true
+    end
+
+    it "takes a snapshot returning {title: ..., favicon_path: ...}" do
+
+      url = "http://en.wikipedia.org/wiki/Main_Page"
+      path_for_expected_favicon = "#{Dir.pwd}/page-snapshot/spec/support/favicon-wikipedia.ico"
+
+      snapshot = SnapshotTaker.take(url)
+
+      expect(snapshot[:title]).to eq("Wikipedia, the free encyclopedia")
+      expect(snapshot[:favicon_path]).to eq(@target_file_path)
+
+      expect(md5_hash(@target_file_path)).to(
+        eq(md5_hash(path_for_expected_favicon)),
+        "Downloaded favicon is not as expected"
+      )
+    end
+
+  end
+
   context ".fetch_title(url)" do
 
     it "should return the title from the page at the given URL" do
@@ -20,7 +45,7 @@ describe SnapshotTaker do
 
   end
 
-  context ".fetch_favicon(url)" do
+  context ".fetch_favicon(url, target_file_path)" do
 
     before do
       @target_file_path = "page-snapshot/spec/support/downloaded-favicon.tmp.ico"
