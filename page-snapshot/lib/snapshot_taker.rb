@@ -8,9 +8,8 @@ module SnapshotTaker
     document.title
   end
 
-  def self.fetch_favicon(url)
+  def self.fetch_favicon(url, target_file_path)
     favicon_url = guess_favicon_url(url)
-    target_file_path = "downloaded-favicon.ico"
     
     open(favicon_url) do |source_file|
       write_binary_file_mode = "wb"
@@ -19,8 +18,6 @@ module SnapshotTaker
         target_file.puts source_file.read
       end
     end
-
-    target_file_path
   end
 
   def self.guess_favicon_url(url)

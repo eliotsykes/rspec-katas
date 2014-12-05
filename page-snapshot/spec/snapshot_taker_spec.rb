@@ -22,14 +22,19 @@ describe SnapshotTaker do
 
   context ".fetch_favicon(url)" do
 
+    before do
+      @target_file_path = "page-snapshot/spec/support/downloaded-favicon.tmp.ico"
+      FileUtils.rm @target_file_path, force: true
+    end
+
     it "should fetch the favicon for the given URL" do
       
       url = "http://en.wikipedia.org/wiki/Main_Page"
       path_for_expected_favicon = "#{Dir.pwd}/page-snapshot/spec/support/favicon-wikipedia.ico"
+
+      SnapshotTaker.fetch_favicon(url, @target_file_path)
       
-      path_for_downloaded_favicon = SnapshotTaker.fetch_favicon(url)
-      
-      expect(md5_hash(path_for_downloaded_favicon)).to(
+      expect(md5_hash(@target_file_path)).to(
         eq(md5_hash(path_for_expected_favicon)),
         "Downloaded favicon is not as expected"
       )
