@@ -12,3 +12,10 @@ I'll try screencasting if there's sufficient interest (show your interest by sta
 2. Clone your fork to your development machine
 3. Run `bundle` (installs gems specified in Gemfile)
 4. Run `bundle exec rspec fizzbuzz/fizzbuzz_spec.rb` to run the FizzBuzz spec
+
+---
+
+# Contributors
+
+- Eliot Sykes https://eliotsykes.com/
+- Your name here, contributions are welcome and easy! Just fork the GitHub repo, make your changes, then submit your pull request!
