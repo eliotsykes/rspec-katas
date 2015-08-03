@@ -1,0 +1,41 @@
+# Supervillain School: Book Befuddler
+
+You're an ambitious pupil of Supervillain School who's not being taken seriously by your classmates. Your fellow evil-doers-in-training don't believe you have what it takes to unleash chaos inside this or any other dimension.
+
+You're going to prove them wrong.
+
+You've been secretly working on a weapon of such unnatural power that if you pull it off your friends and enemies will never look at you, nor their textbooks, in the same way again! MwahahahaHAHA!
+
+Yes, that's right, you've used your evil genius to build The Book Befuddler!
+
+Disguised to look like a harmless laser cannon, your Book Befuddler scrambles the words of any book you fire its wacky word ray at, making the book unreadable...ish
+
+Your ultimate weapon is almost complete. The final task is to program the word-scrambling algorithm.
+
+Whilst laughing maniacally, write a `befuddle(text)` method.
+
+- The `text` parameter is a `String` consisting of one or more sentences
+- Assume sentences are always terminated with a single period `'.''`
+- Return the scambled text from the method (details below)
+- Return an empty string `''` if the given text is blank or nil
+- If the input text contains consecutive whitespace, the scrambled text will collapse this down to a single whitespace character
+
+Scramble *each* sentence in the `text` parameter in the following way:
+
+- The 1st word must be reversed
+- The 2nd word (if present) must be uppercased
+- The 3rd word (if present) must have the last character chopped off
+- The 4th word (if present) must be capitalized
+- The 5th word (if present) must be the length of the word
+- The 6th word (if present) must be lowercased
+- The 7th word (if present) must be removed completely `clear`
+- The 8th word (if present) must *not* be changed
+
+If there are more than 8 words in a sentence, then the sequence of word transforms start again in the same order as given directly above, so:
+
+- The 9th word (if present) must be reversed
+- The 10th word (if present) must be uppercased
+- The 11th word (if present) must have the last character chopped off
+- and so on...
+
+For extra credit test the completed Book Befuddler on the school library.
