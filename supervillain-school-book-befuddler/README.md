@@ -1,4 +1,4 @@
-# Supervillain School: Book Befuddler
+# Supervillain School: The Book Befuddler
 
 You're an ambitious pupil of Supervillain School who's not being taken seriously by your classmates. Your fellow evil-doers-in-training don't believe you have what it takes to unleash chaos inside this or any other dimension.
 
@@ -12,13 +12,18 @@ Disguised to look like a harmless laser cannon, your Book Befuddler scrambles th
 
 Your ultimate weapon is almost complete. The final task is to program the word-scrambling algorithm.
 
-Whilst laughing maniacally, write a `befuddle(text)` method.
+Whilst laughing maniacally, write a `befuddle(text)` method:
 
 - The `text` parameter is a `String` consisting of one or more sentences
-- Assume sentences are always terminated with a single period `'.''`
 - Return the scambled text from the method (details below)
-- Return an empty string `''` if the given text is blank or nil
-- If the input text contains consecutive whitespace, the scrambled text will collapse this down to a single whitespace character
+- Assume the only punctuation character in the text is standalone periods `'.'` - no other punctuation will appear in the text
+- Assume sentences are always terminated with a single period `'.''`
+- Assume sentences never have whitespace immediately before a period `'.'`
+- Return an empty string `''` if the given `text` string is `nil`, empty or only whitespace
+- The scrambled text contains no consecutive whitespace characters. Any consecutive whitespace characters are squeezed to a single whitespace character `' '`.
+- The original input `text` is never returned from the method
+- The original input `text` is never modified by the method
+- Surrounding whitespace present on the original input `text` should not be present on the returned scrambled text
 
 Scramble *each* sentence in the `text` parameter in the following way:
 
@@ -28,7 +33,7 @@ Scramble *each* sentence in the `text` parameter in the following way:
 - The 4th word (if present) must be capitalized
 - The 5th word (if present) must be the length of the word
 - The 6th word (if present) must be lowercased
-- The 7th word (if present) must be removed completely `clear`
+- The 7th word (if present) must be removed completely
 - The 8th word (if present) must *not* be changed
 
 If there are more than 8 words in a sentence, then the sequence of word transforms start again in the same order as given directly above, so:
