@@ -10,8 +10,8 @@ I'll try screencasting if there's sufficient interest (show your interest by sta
 
 1. Fork this repo
 2. Clone your fork to your development machine
-3. Run `bundle` (installs gems specified in Gemfile)
-4. Run `bundle exec rspec fizzbuzz/fizzbuzz_spec.rb` to run the FizzBuzz spec
+3. Run `bundle install` to install gems specified in Gemfile
+4. Run `bin/rspec fizzbuzz/fizzbuzz_spec.rb` to run the FizzBuzz spec. To run other specs `bin/rspec EXERCISE-NAME/SPEC-FILE.rb`
 
 ---
 
