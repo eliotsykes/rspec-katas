@@ -19,9 +19,9 @@ Whilst laughing maniacally, write a `befuddle(text)` method:
 - Scramble *each* sentence in the `text` parameter in the following way:
   - The 1st word of a sentence must be reversed
   - The 2nd word (if present) of a sentence must be uppercased
-  - The 3rd word (if present) of a sentence must have the last character chopped off
+  - The 3rd word (if present) of a sentence must have the last character chopped off ("heist" becomes "heis")
   - The 4th word (if present) of a sentence must be capitalized
-  - The 5th word (if present) of a sentence must be the length of the word
+  - The 5th word (if present) of a sentence must be the length of the word as a digit ("lair" becomes "4")
   - The 6th word (if present) of a sentence must be lowercased
   - The 7th word (if present) of a sentence must be removed completely
   - The 8th word (if present) of a sentence must *not* be changed
