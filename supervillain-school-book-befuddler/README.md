@@ -16,31 +16,27 @@ Whilst laughing maniacally, write a `befuddle(text)` method:
 
 - The `text` parameter is a `String` consisting of one or more sentences
 - Return the scambled text from the method (details below)
+- Scramble *each* sentence in the `text` parameter in the following way:
+  - The 1st word of a sentence must be reversed
+  - The 2nd word (if present) of a sentence must be uppercased
+  - The 3rd word (if present) of a sentence must have the last character chopped off
+  - The 4th word (if present) of a sentence must be capitalized
+  - The 5th word (if present) of a sentence must be the length of the word
+  - The 6th word (if present) of a sentence must be lowercased
+  - The 7th word (if present) of a sentence must be removed completely
+  - The 8th word (if present) of a sentence must *not* be changed
+- If there are more than 8 words in a sentence, then the sequence of word transforms start again in the same order as given directly above, so:
+  - The 9th word (if present) of a sentence must be reversed
+  - The 10th word (if present) of a sentence must be uppercased
+  - The 11th word (if present) of a sentence must have the last character chopped off
+  - and so on...
+- Assume sentences are always terminated with a single period `'.'`
 - Assume the only punctuation character in the text is standalone periods `'.'` - no other punctuation will appear in the text
-- Assume sentences are always terminated with a single period `'.''`
 - Assume sentences never have whitespace immediately before a period `'.'`
 - Return an empty string `''` if the given `text` string is `nil`, empty or only whitespace
-- The scrambled text contains no consecutive whitespace characters. Any consecutive whitespace characters are squeezed to a single whitespace character `' '`.
-- The original input `text` is never returned from the method
-- The original input `text` is never modified by the method
+- The scrambled text should contain no consecutive whitespace characters. Squeeze consecutive whitespace characters to a single whitespace character `' '`.
 - Surrounding whitespace present on the original input `text` should not be present on the returned scrambled text
+- The original input `text` object is never modified by the method
+- The original input `text` object is never returned from the method
 
-Scramble *each* sentence in the `text` parameter in the following way:
-
-- The 1st word must be reversed
-- The 2nd word (if present) must be uppercased
-- The 3rd word (if present) must have the last character chopped off
-- The 4th word (if present) must be capitalized
-- The 5th word (if present) must be the length of the word
-- The 6th word (if present) must be lowercased
-- The 7th word (if present) must be removed completely
-- The 8th word (if present) must *not* be changed
-
-If there are more than 8 words in a sentence, then the sequence of word transforms start again in the same order as given directly above, so:
-
-- The 9th word (if present) must be reversed
-- The 10th word (if present) must be uppercased
-- The 11th word (if present) must have the last character chopped off
-- and so on...
-
-For extra credit test the completed Book Befuddler on the school library.
+For extra credit, once The Book Befuddler is fully operational, test the weapon on a henchman's textbooks.
