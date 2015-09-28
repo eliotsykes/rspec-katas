@@ -23,7 +23,6 @@ describe 'pitch_class(pitch_class)' do
   end
 
   it 'converts flats' do
-
     expect_conversion 'Db', 1
     expect_conversion 'Eb', 3
     expect_conversion 'Fb', 4
