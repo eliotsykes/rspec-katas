@@ -17,6 +17,7 @@ MODIFIERS = {
 }
 
 def pitch_class(note)
+  return nil unless note =~ /\A[CDEFGAB][#b]?\z/
   natural_note = note[0]
   NATURAL_NOTES[natural_note] + modifier(note)
 end

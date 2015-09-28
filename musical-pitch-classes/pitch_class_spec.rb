@@ -32,6 +32,21 @@ describe 'pitch_class(pitch_class)' do
     expect_conversion 'Cb', 11
   end
 
+  it 'returns nil for unknown note' do
+    expect_conversion 'X', nil
+  end
+
+  it 'returns nil for too long input' do
+    expect_conversion 'Fb#', nil
+    expect_conversion 'HelloWorld', nil
+  end
+
+  it 'returns nil for natural note with unknown suffix' do
+    expect_conversion 'Cd', nil
+    expect_conversion 'G#asdf', nil
+    expect_conversion 'Gx#', nil
+  end
+
   private
 
   def expect_conversion(from, expected)
