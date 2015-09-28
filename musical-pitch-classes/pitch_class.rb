@@ -1,4 +1,3 @@
-
 NATURAL_NOTES = {
   'C' => 0,
   'D' => 2,
@@ -16,8 +15,10 @@ MODIFIERS = {
   'Cb' => 11
 }
 
+NOTE_REGEX = /\A[CDEFGAB][#b]?\z/
+
 def pitch_class(note)
-  return nil unless note =~ /\A[CDEFGAB][#b]?\z/
+  return nil unless note =~ NOTE_REGEX
   natural_note = note[0]
   NATURAL_NOTES[natural_note] + modifier(note)
 end
