@@ -16,14 +16,14 @@ MODIFIERS = {
   'Cb' => 11
 }
 
-def pitch_class(pitch_class)
-  note = pitch_class[0]
-  NATURAL_NOTES[note] + modifier(pitch_class)
+def pitch_class(note)
+  natural_note = note[0]
+  NATURAL_NOTES[natural_note] + modifier(note)
 end
 
 private
 
-def modifier(pitch_class)
-  suffix = pitch_class[1]
-  MODIFIERS[pitch_class] || MODIFIERS[suffix] || 0
+def modifier(note)
+  suffix = note[1]
+  MODIFIERS[note] || MODIFIERS[suffix] || 0
 end
