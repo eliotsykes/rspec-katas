@@ -15,7 +15,7 @@ MODIFIERS = {
   'Cb' => 11
 }
 
-NOTE_REGEX = /\A[CDEFGAB][#b]?\z/
+NOTE_REGEX = /\A[A-G][#b]?\z/
 
 def pitch_class(note)
   return nil unless note =~ NOTE_REGEX
