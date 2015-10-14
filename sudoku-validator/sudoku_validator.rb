@@ -20,7 +20,7 @@ module Sudoku
       return false unless grid
 
       rows = grid
-      columns = build_columns(grid)
+      columns = grid.transpose
       blocks = build_blocks(grid)
 
       (rows + columns + blocks).all? { |chunk| valid_chunk?(chunk) }
@@ -49,13 +49,6 @@ module Sudoku
       end
 
       blocks
-    end
-
-    def build_columns(grid)
-      rows = grid
-      columns = (0...grid.size).map do |column_index|
-        rows.map { |row| row[column_index] }
-      end
     end
 
     def valid_chunk?(chunk)
