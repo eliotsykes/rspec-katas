@@ -1,3 +1,4 @@
+require 'matrix'
 module Sudoku
 
   def self.validate(grid)
@@ -28,7 +29,22 @@ module Sudoku
 
     private
 
+
     def build_blocks(grid)
+      matrix = Matrix.rows(grid)
+      num_blocks = grid.size
+      blocks = []
+
+      (0...num_blocks).step(BLOCK_SIZE).each do |start_row|
+        (0...num_blocks).step(BLOCK_SIZE).each do |start_col|
+          num_rows = num_cols = BLOCK_SIZE
+          blocks << matrix.minor(start_row, num_rows, start_col, num_cols).to_a.flatten
+        end
+      end
+      blocks
+    end
+
+    def build_blocks_without_matrix(grid)
       num_blocks = grid.size
       blocks_per_row = blocks_per_col = grid.size / BLOCK_SIZE
 
