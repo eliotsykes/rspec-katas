@@ -39,7 +39,9 @@ class Sudoku
     end
 
     def square?(grid)
-      grid && grid.size == grid.first.size
+      return false if grid.nil?
+      size = grid.size
+      grid.all? { |row| row.size == size }
     end
 
     def build_blocks(grid)

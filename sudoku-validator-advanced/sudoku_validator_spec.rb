@@ -56,6 +56,17 @@ describe Sudoku do
       ]
       expect(Sudoku.new(invalid_board).is_valid).to eq false
     end
+
+    it 'returns false for board with inconsistent dimensions' do
+      invalid_board = [
+        [1, 4, 4, 3, 4],
+        [3, 2, 4, 1],
+        [4, 1, 3, 3],
+        [2, 0, 1, 4],
+        [1, 2, 3, 4]
+      ]
+      expect(Sudoku.new(invalid_board).is_valid).to eq false
+    end
   end
 
 end
