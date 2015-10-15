@@ -32,5 +32,19 @@ def assert_words_fit_width(words, width)
 end
 
 def pad(line, width)
-  line.sub " ", "  "
+  width_met = line.length == width
+  shortest_whitespace_length = 0
+
+  until width_met
+    shortest_whitespace_length += 1
+    shortest_whitespace_regex = %r{(?<=\S)\s{#{shortest_whitespace_length}}(?=\S)}
+    longer_whitespace = " " * (shortest_whitespace_length+1)
+
+    while !width_met && line =~ shortest_whitespace_regex
+      line.sub! shortest_whitespace_regex, longer_whitespace
+      width_met = line.length == width
+    end
+  end
+
+  line
 end
