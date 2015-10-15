@@ -50,5 +50,9 @@ describe 'justify' do
       expect(pad("consectetur", 15)).to eq "consectetur"
     end
 
+    it 'pads a 4 word, 25 char width line correctly' do
+      expect(pad("Lorem ipsum dolor sit", 25)).to eq "Lorem   ipsum  dolor  sit"
+    end
+
   end
 end
