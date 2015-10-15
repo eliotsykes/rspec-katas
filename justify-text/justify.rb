@@ -9,14 +9,17 @@ def justify(text, width)
 
   until words.empty?
     line = words.shift
+    line_complete = line.length == width
 
-    while words.any? && line.length < width
+    while words.any? && !line_complete
       candidate_length = line.length + space.length + words.first.length
 
       if candidate_length > width
         line = pad(line, width)
+        line_complete = true
       else
         line << space << words.shift
+        line_complete = line.length == width
       end
     end
     lines << line
@@ -34,7 +37,10 @@ end
 def pad(line, width)
   words = line.split
 
+  return line if words.size == 1
+
   num_space_separators = words.size - 1
+
   length_without_spaces = line.length - num_space_separators
   spaces_total_length = width - length_without_spaces
 
@@ -49,7 +55,11 @@ def pad(line, width)
 end
 
 def pad_using_regexp(line, width)
-  width_met = line.length == width
+  words = line.split
+
+  return line if words.size == 1
+
+  width_met = (line.length == width)
   shortest_whitespace_length = 0
 
   until width_met

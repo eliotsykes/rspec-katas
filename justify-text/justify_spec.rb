@@ -29,6 +29,7 @@ describe 'justify' do
 
       expect(justify(text, width)).to eq justified
     end
+
   end
 
   context 'pad(line, width)' do
@@ -43,6 +44,10 @@ describe 'justify' do
 
     it 'pads a line with 3 words and a comma until width met' do
       expect(pad("sit amet, consec", 20)).to eq "sit   amet,   consec"
+    end
+
+    it 'does not add whitespace to a line with 1 word' do
+      expect(pad("consectetur", 15)).to eq "consectetur"
     end
 
   end
