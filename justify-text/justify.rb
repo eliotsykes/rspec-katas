@@ -3,10 +3,11 @@ def justify(text, width)
 
   line_regex = /(?<=\s|\A).{1,#{width}}(?=\s|\z)/
 
-  justified_text = text.
-    scan(line_regex).
-    map { |line| justify_line(line, width) }.
-    join("\n")
+  justified_text = ""
+  text.scan(line_regex) do |line|
+    justified_text << justify_line(line, width) << "\n"
+  end
+  justified_text.chomp!
 
   raise "Text cannot be justified to width #{width} without splitting words" if justified_text.empty?
 
