@@ -5,9 +5,8 @@ def justify(text, width)
 
   line_regex = /(?<=\s|\A).{1,#{width}}(?=\s|\z)/
 
-  justified = ''
-
   lines = text.scan(line_regex)
+
   final_unjustified_line = lines.pop
 
   lines.map! { |line| justify_line(line, width) }
