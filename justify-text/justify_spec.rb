@@ -13,7 +13,7 @@ describe 'justify' do
         justify("something something something", 8)
       end.to raise_error(
         RuntimeError,
-        "Text cannot be justified to width 8 without splitting words"
+        "Cannot justify to width 8 without splitting words"
       )
     end
 

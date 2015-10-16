@@ -3,35 +3,26 @@ def justify(text, width)
 
   line_regex = /(?<=\s|\A).{1,#{width}}(?=\s|\z)/
 
-  justified_text = ""
-  text.scan(line_regex) do |line|
-    justified_text << justify_line(line, width) << "\n"
-  end
-  justified_text.chomp!
+  justified = ''
 
-  raise "Text cannot be justified to width #{width} without splitting words" if justified_text.empty?
+  text.scan(line_regex) { |line| justified << justify_line(line, width) << "\n" }
 
-  return justified_text
+  justified.chomp!
+
+  raise "Cannot justify to width #{width} without splitting words" if justified.empty?
+
+  justified
 end
 
 def justify_line(line, width)
-  words = line.split
+  num_spaces_to_add = width - line.length
+  return line if num_spaces_to_add.zero?
 
-  return line if words.size == 1
+  spacers_cycler = line.scan(' ').cycle
+  return line if spacers_cycler.none?
 
-  width_met = (line.length == width)
-  shortest_whitespace_length = 0
+  num_spaces_to_add.times { spacers_cycler.next << ' ' }
+  spacers_cycler.rewind
 
-  until width_met
-    shortest_whitespace_length += 1
-    shortest_whitespace_regex = %r{(?<=\S)\s{#{shortest_whitespace_length}}(?=\S)}
-    longer_whitespace = " " * (shortest_whitespace_length+1)
-
-    while !width_met && line =~ shortest_whitespace_regex
-      line.sub! shortest_whitespace_regex, longer_whitespace
-      width_met = line.length == width
-    end
-  end
-
-  line
+  line.gsub(' ') { |space| spacers_cycler.next }
 end
