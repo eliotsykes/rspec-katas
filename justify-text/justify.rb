@@ -1,14 +1,19 @@
 def justify(text, width)
-  return if text.nil? || text.empty?
+  return unless text && !text.empty?
 
-  lines_to_pad = text.scan /(?<=\s|\A).{,#{width}}(?=\s|\z)/
+  line_to_pad_regex = /(?<=\s|\A).{1,#{width}}(?=\s|\z)/
 
-  raise "Text cannot be justified to width #{width} without splitting words" if lines_to_pad.empty?
+  justified_text = text.
+    scan(line_to_pad_regex).
+    map { |line| justify_line(line, width) }.
+    join("\n")
 
-  return lines_to_pad.map { |line| pad(line, width) }.join("\n")
+  raise "Text cannot be justified to width #{width} without splitting words" if justified_text.empty?
+
+  return justified_text
 end
 
-def pad(line, width)
+def justify_line(line, width)
   words = line.split
 
   return line if words.size == 1

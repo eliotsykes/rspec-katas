@@ -37,26 +37,26 @@ describe 'justify' do
 
   end
 
-  context 'pad(line, width)' do
+  context 'justify_line(line, width)' do
 
-    it 'does not pad a line with correct width already' do
-      expect(pad("hello world", 11)).to eq "hello world"
+    it 'does not justify a line with correct width already' do
+      expect(justify_line("hello world", 11)).to eq "hello world"
     end
 
-    it 'pads a line with 2 words until width met' do
-      expect(pad("hello world", 14)).to eq "hello    world"
+    it 'justifies a line with 2 words until width met' do
+      expect(justify_line("hello world", 14)).to eq "hello    world"
     end
 
-    it 'pads a line with 3 words and a comma until width met' do
-      expect(pad("sit amet, consec", 20)).to eq "sit   amet,   consec"
+    it 'justifies a line with 3 words and a comma until width met' do
+      expect(justify_line("sit amet, consec", 20)).to eq "sit   amet,   consec"
     end
 
     it 'does not add whitespace to a line with 1 word' do
-      expect(pad("consectetur", 15)).to eq "consectetur"
+      expect(justify_line("consectetur", 15)).to eq "consectetur"
     end
 
-    it 'pads a 4 word, 25 char width line correctly' do
-      expect(pad("Lorem ipsum dolor sit", 25)).to eq "Lorem   ipsum  dolor  sit"
+    it 'justifies a 4 word, 25 char width line correctly' do
+      expect(justify_line("Lorem ipsum dolor sit", 25)).to eq "Lorem   ipsum  dolor  sit"
     end
 
   end
