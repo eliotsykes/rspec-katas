@@ -1,10 +1,10 @@
 def justify(text, width)
   return unless text && !text.empty?
 
-  line_to_pad_regex = /(?<=\s|\A).{1,#{width}}(?=\s|\z)/
+  line_regex = /(?<=\s|\A).{1,#{width}}(?=\s|\z)/
 
   justified_text = text.
-    scan(line_to_pad_regex).
+    scan(line_regex).
     map { |line| justify_line(line, width) }.
     join("\n")
 
