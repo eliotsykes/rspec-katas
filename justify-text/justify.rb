@@ -1,17 +1,19 @@
 def justify(text, width)
   return unless text && !text.empty?
 
+  assert_justifiable(text, width)
+
   line_regex = /(?<=\s|\A).{1,#{width}}(?=\s|\z)/
 
   justified = ''
 
-  text.scan(line_regex) { |line| justified << justify_line(line, width) << "\n" }
+  lines = text.scan(line_regex)
+  final_unjustified_line = lines.pop
 
-  justified.chomp!
+  lines.map! { |line| justify_line(line, width) }
+  lines << final_unjustified_line
 
-  raise "Cannot justify to width #{width} without splitting words" if justified.empty?
-
-  justified
+  lines.join("\n")
 end
 
 def justify_line(line, width)
@@ -25,4 +27,11 @@ def justify_line(line, width)
   spacers_cycler.rewind
 
   line.gsub(' ') { |space| spacers_cycler.next }
+end
+
+def assert_justifiable(text, width)
+  too_long_word_regex  = /\S{#{width+1},}/
+  if text =~ too_long_word_regex
+    raise "Cannot justify to width #{width} without word-splitting"
+  end
 end

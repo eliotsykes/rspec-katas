@@ -13,7 +13,7 @@ describe 'justify' do
         justify("something something something", 8)
       end.to raise_error(
         RuntimeError,
-        "Cannot justify to width 8 without splitting words"
+        "Cannot justify to width 8 without word-splitting"
       )
     end
 
@@ -31,6 +31,17 @@ describe 'justify' do
         "adipiscing     elit.\n" +
         "Donec   at  soldales\n" +
         "metus."
+
+      expect(justify(text, width)).to eq justified
+    end
+
+    it 'does not justify last line' do
+      text = "Lorem ipsum dolor sit amet, consec adipiscing elit."
+      width = 27
+
+      justified =
+        "Lorem ipsum dolor sit amet,\n" +
+        "consec adipiscing elit."
 
       expect(justify(text, width)).to eq justified
     end
