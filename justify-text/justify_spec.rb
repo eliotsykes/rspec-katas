@@ -9,7 +9,12 @@ describe 'justify' do
     end
 
     it 'raises error if longest word is greater than width' do
-      expect { justify("something something something", 8) }.to raise_error ArgumentError
+      expect do
+        justify("something something something", 8)
+      end.to raise_error(
+        RuntimeError,
+        "Text cannot be justified to width 8 without splitting words"
+      )
     end
 
     it 'justifies short text by given width' do
