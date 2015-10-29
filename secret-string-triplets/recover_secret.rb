@@ -7,7 +7,7 @@ end
 def extract_next_char(sequences)
   candidates = sequences.map(&:first)
   next_char = candidates.find do |candidate|
-    sequences.all? { |sequence| [0, nil].include?(sequence.index(candidate)) }
+    sequences.all? { |sequence| sequence.index(candidate).to_i.zero? }
   end
   sequences.each { |sequence| sequence.delete(next_char) }
   sequences.delete_if &:empty?
