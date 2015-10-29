@@ -5,7 +5,7 @@ def recover_secret(sequences)
 end
 
 def extract_next_char(sequences)
-  candidates = sequences.map(&:first)
+  candidates = sequences.map(&:first).uniq
   next_char = candidates.find do |candidate|
     sequences.all? { |sequence| sequence.index(candidate).to_i.zero? }
   end
