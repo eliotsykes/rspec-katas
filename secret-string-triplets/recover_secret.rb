@@ -10,6 +10,6 @@ def extract_next_char(sequences)
     sequences.all? { |sequence| [0, nil].include?(sequence.index(candidate)) }
   end
   sequences.each { |sequence| sequence.delete(next_char) }
-  sequences.delete []
+  sequences.delete_if &:empty?
   next_char
 end
