@@ -1,13 +1,17 @@
-def recover_secret(triplets)
+def recover_secret(sequences)
   secret = ''
-  until triplets.empty?
-    next_char_candidates = triplets.map(&:first)
-    next_char = next_char_candidates.find do |next_char_candidate|
-      triplets.all? { |triplet| [0, nil].include? triplet.index(next_char_candidate) }
-    end
-    triplets.each { |triplet| triplet.delete(next_char) }
-    triplets.delete []
-    secret << next_char
+  until sequences.empty?
+    secret << extract_next_char(sequences)
   end
   secret
+end
+
+def extract_next_char(sequences)
+  candidates = sequences.map(&:first)
+  next_char = candidates.find do |candidate|
+    sequences.all? { |sequence| [0, nil].include?(sequence.index(candidate)) }
+  end
+  sequences.each { |sequence| sequence.delete(next_char) }
+  sequences.delete []
+  next_char
 end
