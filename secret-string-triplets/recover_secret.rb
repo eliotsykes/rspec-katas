@@ -42,6 +42,8 @@ class Decoder
 
   private
 
+  HAS_NO_EARLIER_LETTERS = [].freeze
+
   def build_letter_graph
     @letter_graph = Hash.new { |graph, letter| graph[letter] = Set.new }
     @sequences.each do |sequence|
@@ -49,7 +51,7 @@ class Decoder
         @letter_graph[later_letter] << earlier_letter
       end
     end
-    @letter_graph.default = Set.new
+    @letter_graph.default = HAS_NO_EARLIER_LETTERS
   end
 
   def each_letter(&block)
