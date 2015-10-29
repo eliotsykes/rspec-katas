@@ -1,8 +1,6 @@
 def recover_secret(sequences)
   secret = ''
-  until sequences.empty?
-    secret << extract_next_char(sequences)
-  end
+  secret << extract_next_char(sequences) until sequences.empty?
   secret
 end
 
